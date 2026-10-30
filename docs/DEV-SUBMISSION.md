@@ -1,5 +1,5 @@
 ---
-title: "Third Telling: the names survived, but the memory changed"
+title: "Telerex: Comparing Story Retellings With Local Gemma"
 published: false
 tags: devchallenge, hf26challenge, gemma, ai
 ---
@@ -12,7 +12,7 @@ In one fictional memory, Sami takes a photograph of his older brother Adil. Thre
 
 That is the ghost I wanted to make visible: a story can keep its familiar names while losing the relationships that made it true.
 
-**Third Telling** runs two paths through local Gemma. One retelling reads the one before it. The other reads the original every time. Each path has three tellings, shown beside the unchanged source. You can start with one of three fictional memories or write your own short story, choose five phrases to follow, and export the full record.
+**Telerex** runs two paths through local Gemma. One retelling reads the one before it. The other reads the original every time. Each path has three tellings, shown beside the unchanged source. You can start with one of three fictional memories or write your own short story, choose five phrases to follow, and export the full record.
 
 This fits the theme through the traces a memory leaves behind. It does not impersonate a dead relative or claim to recover a real memory. Every public example is fictional.
 
@@ -60,7 +60,7 @@ This also leaves a small tool that can keep running if a hosted service disappea
 
 The application and fictional samples are MIT licensed. Gemma is an open-weight model under its own [Terms of Use](https://ai.google.dev/gemma/terms), not the application's MIT licence. No weights are redistributed in the repository.
 
-While scoping the idea, I read [Older Card by Akshay Goel](https://dev.to/akshaygoel7/older-card-the-later-story-is-louder-and-the-line-is-thrown-away-1edi), which checks a remembrance line against an older note. That is adjacent work on source fidelity. Third Telling exposes successive generations and their inputs; it does not claim that memory drift is a new idea.
+While scoping the idea, I read [Older Card by Akshay Goel](https://dev.to/akshaygoel7/older-card-the-later-story-is-louder-and-the-line-is-thrown-away-1edi), which checks a remembrance line against an older note. That is adjacent work on source fidelity. Telerex exposes successive generations and their inputs; it does not claim that memory drift is a new idea.
 
 ## Prize Categories
 
