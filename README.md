@@ -42,7 +42,22 @@ Open **http://127.0.0.1:3210**. On macOS/Linux, use `export OLLAMA_NO_CLOUD=1` a
 | OLLAMA_MODEL | gemma3:1b | Downloaded local model |
 | MODEL_TIMEOUT_MS | 120000 | Per-request timeout, up to 300000 ms |
 
-For a separate model server, set `OLLAMA_HOST=127.0.0.1:11436` in the Ollama terminal before `serve` and `pull`, and set `OLLAMA_URL=http://127.0.0.1:11436` in the app's .env. Restart after changing configuration.
+For a separate model server, set the endpoint in **both Ollama terminals**; terminal environments are separate.
+
+```powershell
+# Terminal 1
+$env:OLLAMA_HOST="127.0.0.1:11436"
+$env:OLLAMA_NO_CLOUD="1"
+ollama serve
+```
+
+```powershell
+# Terminal 2
+$env:OLLAMA_HOST="127.0.0.1:11436"
+ollama pull gemma3:1b
+```
+
+Set `OLLAMA_URL=http://127.0.0.1:11436` in the app's .env. Restart after changing configuration.
 
 If the model is missing, run `ollama pull` against the same Ollama instance. If it times out, increase the timeout within the supported range or use a smaller downloaded model. A model change needs fresh evaluation; the published results cover Gemma 3 1B only. Cancel stops the request and keeps completed stages available for export.
 
@@ -64,6 +79,8 @@ Both use the same prompt, temperature 0, seed 42, 2,048-token context, 256-token
 ## Evidence and limits
 
 Six fictional stories, five prewritten facts each, **36 actual model calls**. Full experiments took **47.1–61.9 seconds** on CPU. Per-call median was **8.134 seconds**; outputs were **50–79 words**. [Every case and factual observation](docs/evaluation/README.md) is included, including failures.
+
+Two [recorded repeats](docs/evaluation/repeats/) are reported separately: blue-tin text stayed identical, while the repeated lantern chain fell to 38 words and lost its explicit unknown date. The 36 calls summarised above remain the initial set.
 
 Returning to the original preserved some details but still changed relationships, lost uncertainty and added unsupported claims. Both camera-story outputs retained all five phrases while confusing who appeared in the photo. A fixed seed did not reliably produce identical first outputs. This is a small illustration, not a factuality benchmark or a study of human memory.
 

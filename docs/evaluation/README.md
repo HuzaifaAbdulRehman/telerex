@@ -4,7 +4,7 @@ These are real local Gemma runs from 30 October 2026, not UI fixtures. Each of s
 
 Gemma 3 1B, Q4_K_M, ran on CPU through Ollama 0.40.0 on a 16 GB laptop. The exact model digest, prompts, settings, outputs and token counts are in [runs/](runs/). The inference engine was commit `ffc6e2d`; later UI and documentation work did not change those prompts.
 
-Both paths used temperature 0, seed 42, context 2,048, output budget 256 tokens and a target of 70 words. Chain reads its previous output; source reads the unchanged original. Calls alternate chain/source each round. This is a descriptive experiment with one recorded run per case, no statistical test, no model comparison and no claim about human memory.
+Both paths used temperature 0, seed 42, context 2,048, output budget 256 tokens and a target of 70 words. Chain reads its previous output; source reads the unchanged original. Calls alternate chain/source each round. This is a descriptive experiment with one initial run per case and repeats of two cases, no statistical test, no model comparison and no claim about human memory.
 
 ## Measured results
 
@@ -96,6 +96,19 @@ Chain has more literal phrases here, five versus four. Source is not uniformly b
 | Noor borrows animal book and storybook | Keeps two book types; “received” replaces borrowing and individual borrower is less clear. | Keeps two book types; “they” replaces Noor as borrower. |
 | Father does not take newspaper home | Non-removal detail omitted; receiving a paper does not establish taking it home. | Non-removal detail omitted; borrowing a paper does not establish taking it home. |
 | Four bread rolls, cash | Keeps four rolls; cash omitted. | Same. |
+
+## Two recorded repeats
+
+The initial six records above were preserved unchanged. The [blue-tin repeat](repeats/blue-tin.json) was captured through the real browser demo; the [lantern-year repeat](repeats/lantern-year.json) used the same engine, settings and model digest. These are 12 additional recorded calls, excluded from the initial table and latency summary.
+
+| Case | Initial time | Repeat time | Text comparison |
+| --- | ---: | ---: | --- |
+| Blue tin | 48.2 s | 55.5 s | All six outputs identical; the same factual observations apply. |
+| Lantern year | 49.3 s | 41.7 s | All three source outputs identical; all three chain outputs changed. |
+
+The repeated final lantern chain contains 38 words and four tracked phrases, versus 50 words and five phrases initially. Against the same five facts: it keeps both possible years; still omits the kitchen-floor/curtain placement; keeps no injuries but drops the explicit undamaged-house statement; replaces uncertain match-bringing with a vague uncertain neighbour “relationship”; and omits the album decision and explicit unknown date. The source final output is identical to the initial run, so its five factual observations above apply unchanged. The repeated blue-tin finals are also identical to the initial outputs.
+
+These repeats show both stability and variation in this setup. Two repeated stories do not establish a reliable effect size, and the cause of variation remains untested.
 
 ## Reproduce and inspect
 

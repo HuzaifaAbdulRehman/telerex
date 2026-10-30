@@ -67,3 +67,21 @@ test('disconnecting releases the busy slot and aborts the model request',async t
  assert.equal(retry.status,200);assert.match(await retry.text(),/"type":"complete"/);
  assert.ok(fake.state.aborted>=1);
 });
+
+
+test('accepts canonical browser Host and Origin on HTTP port 80',async t=>{
+ const fake=fakeOllama();const upstream=await listen(fake.server);
+ const app=createApp({port:80,ollamaUrl:upstream.url,model:'gemma3:1b',timeoutMs:2000,distDir:tmpdir()});
+ const local=await listen(app);t.after(async()=>{await local.close();await upstream.close();});
+ // Use an ephemeral listener while exercising the address reported for port 80.
+ t.mock.method(app,'address',()=>({address:'127.0.0.1',family:'IPv4',port:80}));
+ const status=(host:string,origin:string)=>new Promise<number>((resolve,reject)=>{
+  const req=request(local.url+'/api/health',{headers:{Host:host,Origin:origin}},res=>{res.resume();resolve(res.statusCode!);});
+  req.on('error',reject);req.end();
+ });
+ assert.equal(await status('127.0.0.1','http://127.0.0.1'),200);
+ assert.equal(await status('localhost','http://localhost'),200);
+ assert.equal(await status('[::1]','http://[::1]'),200);
+ assert.equal(await status('127.0.0.1','http://untrusted.example'),403);
+ assert.equal(fake.state.calls,0);
+});

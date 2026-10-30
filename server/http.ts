@@ -77,7 +77,7 @@ export function createApp(config:AppConfig, assets?: AssetMiddleware) {
     try {
       const address = server.address();
       const port = address && typeof address === 'object' ? address.port : config.port;
-      const hosts = new Set(['127.0.0.1:'+port,'localhost:'+port,'[::1]:'+port]);
+      const hosts = new Set(['127.0.0.1','localhost','[::1]'].map(host=>new URL('http://'+host+':'+port).host));
       const origins = new Set([...hosts].map(host=>'http://'+host));
       if (!hosts.has(request.headers.host ?? '') ||
         (request.headers.origin && !origins.has(request.headers.origin)) ||

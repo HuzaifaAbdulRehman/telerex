@@ -46,7 +46,7 @@ Three findings shaped the interface:
 
 The warning under the results therefore says **“Phrase matches are not a truth score.”** Matching is case-insensitive and literal, with word boundaries. A date rewritten in another format can fail the tracker without changing meaning. A name inside a false sentence can still match.
 
-There is another limit: five of six cases returned different first outputs despite identical explicit settings and source text. I did not isolate the runtime cause. This single-run comparison cannot prove that the source-selection method caused every difference, and unequal output lengths also affect which details survive.
+There is another limit: five of six cases returned different first outputs despite identical explicit settings and source text. I did not isolate the runtime cause. I repeated two stories: blue-tin text stayed identical, while the lantern chain changed and lost its explicit unknown date. This small comparison cannot prove that the source-selection method caused every difference, and unequal output lengths also affect which details survive.
 
 The app handles missing models, timeouts, cancelled requests and incomplete streams. Completed stages stay exportable after interruption. Automated tests cover the engine and HTTP boundary, plus browser workflows for input, export, cancellation and mobile layout. Public screenshots and the video come from actual local model runs.
 
@@ -59,6 +59,8 @@ The code exposes every prompt and intermediate input. Someone can change an inst
 This also leaves a small tool that can keep running if a hosted service disappears. It does not need a subscription, API credit or database. Hardware and electricity still have costs; those were not measured.
 
 The application and fictional samples are MIT licensed. Gemma is an open-weight model under its own [Terms of Use](https://ai.google.dev/gemma/terms), not the application's MIT licence. No weights are redistributed in the repository.
+
+While scoping the idea, I read [Older Card by Akshay Goel](https://dev.to/akshaygoel7/older-card-the-later-story-is-louder-and-the-line-is-thrown-away-1edi), which checks a remembrance line against an older note. That is adjacent work on source fidelity. Third Telling exposes successive generations and their inputs; it does not claim that memory drift is a new idea.
 
 ## Prize Categories
 
