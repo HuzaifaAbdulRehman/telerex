@@ -1,0 +1,13 @@
+:root{
+ --paper:#f4f0e7;--paper-deep:#eae5da;--sheet:#faf8f2;
+ --ink:#2b2c28;--ink-soft:#494a43;--muted:#68685e;--subtle:#99988e;
+ --accent:#a44830;--highlight:#f0ddc1;--ready:#53694b;
+ --line:#d6d1c4;--line-strong:#bdb8aa;
+ --serif:Georgia,'Times New Roman',serif;
+ --sans:'Segoe UI',Arial,sans-serif;--mono:'Cascadia Code',Consolas,monospace;
+ --text-micro:10px;--text-tiny:12px;--text-small:14px;--text-base:15px;
+ --text-medium:17px;--text-large:21px;--text-heading:25px;--text-logo:29px;
+ --space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;
+ --space-5:24px;--space-6:32px;--space-7:40px;--space-8:48px;--space-9:64px;
+ --radius:3px;--page-width:1560px;
+}
