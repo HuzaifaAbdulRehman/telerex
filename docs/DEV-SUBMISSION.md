@@ -26,8 +26,6 @@ The video records real inference and the JSON export. This is a local applicatio
 
 ## Code
 
-{% github HuzaifaAbdulRehman/telerex %}
-
 [Source and setup](https://github.com/HuzaifaAbdulRehman/telerex) · [All six evaluation cases](https://github.com/HuzaifaAbdulRehman/telerex/blob/main/docs/evaluation/README.md)
 
 ## How I Built It
